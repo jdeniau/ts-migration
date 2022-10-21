@@ -3,7 +3,7 @@ import { FileImports } from './FileImports.mjs';
 export function generateHtml(fileImports: FileImports[], dir: string): string {
   const nbTs = fileImports.filter((file) => file.isTs()).length;
 
-  const percentageTs = ((100 * nbTs) / fileImports.length).toFixed(0);
+  const percentageTs = ((100 * nbTs) / fileImports.length).toFixed(2);
 
   return `
 <!doctype html>

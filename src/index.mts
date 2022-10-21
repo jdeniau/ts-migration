@@ -76,7 +76,7 @@ getFiles(path.resolve(DIR, FILE_DIR ?? ''))
 //   JSON.stringify(numberOfImportsPerFile.sort(FileImports.sort), null, 2)
 // );
 
-const html = generateHtml(numberOfImportsPerFile.sort(FileImports.sort));
+const html = generateHtml(numberOfImportsPerFile.sort(FileImports.sort), DIR);
 
 console.log(html);
 

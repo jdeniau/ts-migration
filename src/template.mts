@@ -1,6 +1,6 @@
 import { FileImports } from './FileImports.mjs';
 
-export function generateHtml(fileImports: FileImports[]): string {
+export function generateHtml(fileImports: FileImports[], dir: string): string {
   const nbTs = fileImports.filter((file) => file.isTs()).length;
 
   const percentageTs = ((100 * nbTs) / fileImports.length).toFixed(0);
@@ -25,7 +25,7 @@ export function generateHtml(fileImports: FileImports[]): string {
   <body>
     <div id="root">
       <div class="App App--finished">
-        <h1>TS Migration</h1>
+        <h1>TS Migration for "${dir}"</h1>
         <h2 class="mt0">${nbTs} / ${fileImports.length} (${percentageTs}%)</h2>
         <main class="HeatMap">
         ${fileImports

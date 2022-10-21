@@ -19,7 +19,7 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
     <link rel="icon" href="/behat-logs/favicon.ico"/>
     <link rel="apple-touch-icon" href="/behat-logs/logo192.png"/>
     <link rel="manifest" href="/behat-logs/manifest.json"/>
-    <link href="/index.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
   </head>
   
   <body>
@@ -53,7 +53,7 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
       </div>
     </div>
 
-    <script src="/index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
 `;

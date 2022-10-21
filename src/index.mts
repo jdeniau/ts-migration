@@ -4,8 +4,12 @@ import { extractNumberOfFilePerType } from './extractNumberOfFilePerType.mjs';
 import { FileImports } from './FileImports.mjs';
 import { generateHtml } from './template.mjs';
 
-const FILE_DIR = 'src/';
-const DIR = '/home/jdeniau/code/desk/';
+// extract DIR and FILE_DIR from args
+const [DIR, FILE_DIR] = process.argv.slice(2);
+
+if (!DIR) {
+  throw new Error('DIR argument is required');
+}
 
 function getFileNumberOfLines(filePath: string): number {
   const file = fs.readFileSync(path.resolve(filePath), 'utf8');
@@ -23,6 +27,15 @@ function getFiles(dir: string, files_: FileWithLoc[] = []) {
   for (const file of files) {
     const name = path.join(dir, file.name);
 
+    // ignore .git and node_modules directory
+    if (
+      file.isDirectory() &&
+      (file.name === '.git' || file.name === 'node_modules')
+    ) {
+      console.log(`Ignoring ${name}`);
+      continue;
+    }
+
     if (file.isDirectory()) {
       getFiles(name, files_);
     } else {
@@ -34,7 +47,9 @@ function getFiles(dir: string, files_: FileWithLoc[] = []) {
 
 const numberOfImportsPerFile: FileImports[] = [];
 
-getFiles(DIR + FILE_DIR)
+console.log(`Getting files from ${path.resolve(DIR, FILE_DIR ?? '')}...`);
+
+getFiles(path.resolve(DIR, FILE_DIR ?? ''))
   .filter(
     (file) =>
       file.filePath.endsWith('.js') ||
@@ -46,7 +61,7 @@ getFiles(DIR + FILE_DIR)
     const numberOfImports = extractNumberOfFilePerType(file.filePath);
 
     const fileImports = new FileImports(
-      file.filePath.replace(DIR, ''),
+      file.filePath.replace(DIR, '').replace(/^\/+/, ''),
       file.loc,
       numberOfImports.externalImports,
       numberOfImports.jsImports,

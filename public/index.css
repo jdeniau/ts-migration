@@ -34,7 +34,7 @@ body,
   max-width: 80%;
 }
 
-.Test {
+.File {
   background: #eee;
   border: 1px solid #fff;
   color: transparent;
@@ -49,23 +49,23 @@ body,
   text-align: center;
 }
 
-.Test--active {
+.File--active {
   background: #63d2ea;
 }
 
-.Test--js {
+.File--js {
   background: #FFE70B;
 }
 
-.Test--active.Test--js {
+.File--active.File--js {
   background: #E8D951;
 }
 
-.Test--ts {
+.File--ts {
   background: #007ACC;
 }
 
-.Test--active.Test--ts {
+.File--active.File--ts {
   background: #0067B1;
 }
 

@@ -1,3 +1,5 @@
+const ITEM_CLASS = 'File';
+
 function copyToClip(str) {
   function listener(e) {
     e.clipboardData?.setData('text/html', str);
@@ -15,7 +17,7 @@ document.addEventListener(
   function (event) {
     const target = event.target;
 
-    if (!target.classList.contains('Test')) {
+    if (!target.classList.contains(ITEM_CLASS)) {
       return;
     }
 
@@ -41,7 +43,7 @@ document.addEventListener(
 document.addEventListener('mouseout', function (event) {
   const target = event.target;
 
-  if (!target.classList.contains('Test')) {
+  if (!target.classList.contains(ITEM_CLASS)) {
     return;
   }
 
@@ -52,9 +54,11 @@ document.addEventListener('mouseout', function (event) {
 document.addEventListener('click', function (event) {
   const target = event.target;
 
-  if (!target.classList.contains('Test')) {
+  if (!target.classList.contains(ITEM_CLASS)) {
     return;
   }
 
-  copyToClip(target.getAttribute('data-tooltip'));
+  event.preventDefault();
+
+  copyToClip(target.getAttribute('data-copy'));
 });

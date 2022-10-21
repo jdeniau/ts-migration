@@ -78,7 +78,5 @@ getFiles(path.resolve(DIR, FILE_DIR ?? ''))
 
 const html = generateHtml(numberOfImportsPerFile.sort(FileImports.sort), DIR);
 
-console.log(html);
-
 fs.mkdirSync(path.resolve('public'), { recursive: true });
 fs.writeFileSync(path.resolve('public/index.html'), html);

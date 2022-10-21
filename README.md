@@ -9,7 +9,7 @@ A tool that list the remaining JS files and sort them for a migration to TS.
 Clone the project
 
 ```sh
-git clone git@github.com:jdeniau/ts-migration.git
+git clone https://github.com/jdeniau/ts-migration.git
 cd ts-migration
 yarn install
 ```

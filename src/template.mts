@@ -50,6 +50,10 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
           })
           .join('\n')}
         </main>
+        
+        <p>
+          <em>Press "i" to mark a file as "ignored" (locally)</em>
+        </p>
       </div>
     </div>
 

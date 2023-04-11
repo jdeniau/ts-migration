@@ -1,18 +1,18 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  html,
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html,
 body,
 #root,
 .App {
@@ -49,24 +49,20 @@ body,
   text-align: center;
 }
 
-.File--active {
-  background: #63d2ea;
-}
-
 .File--js {
-  background: #FFE70B;
+  background: #ffe70b;
 }
 
-.File--active.File--js {
-  background: #E8D951;
+.File--ignored.File--js {
+  background: #f0eac8;
 }
 
 .File--ts {
-  background: #007ACC;
+  background: #007acc;
 }
 
-.File--active.File--ts {
-  background: #0067B1;
+.File--ignored.File--ts {
+  background: #b5d5ec;
 }
 
 .Tooltip {

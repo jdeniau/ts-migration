@@ -5,9 +5,9 @@
     "build": "rm -rf dist; tsc; node dist/index.mjs"
   },
   "dependencies": {
-    "typescript": "^4.8.4"
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@types/node": "^18.11.3"
+    "@types/node": "^18.15.11"
   }
 }

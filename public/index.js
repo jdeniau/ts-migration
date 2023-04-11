@@ -12,6 +12,8 @@ function copyToClip(str) {
   document.removeEventListener('copy', listener);
 }
 
+let currentHover;
+
 document.addEventListener(
   'mouseover',
   function (event) {
@@ -36,6 +38,8 @@ document.addEventListener(
 
     tooltip.appendChild(tooltipContent);
     document.body.appendChild(tooltip);
+
+    currentHover = target;
   },
   false
 );
@@ -49,6 +53,7 @@ document.addEventListener('mouseout', function (event) {
 
   const tooltip = document.querySelector('.Tooltip');
   tooltip.remove();
+  delete currentHover;
 });
 
 document.addEventListener('click', function (event) {
@@ -62,3 +67,59 @@ document.addEventListener('click', function (event) {
 
   copyToClip(target.getAttribute('data-copy'));
 });
+
+window.tagIgnoredFiles = function tagIgnoredFiles() {
+  const files = document.querySelectorAll('.File');
+  const pushedLastFiles = getPushedLastFiles();
+
+  files.forEach((file) => {
+    const path = file.getAttribute('data-copy');
+
+    if (pushedLastFiles.has(path)) {
+      file.classList.add('File--ignored');
+    } else {
+      file.classList.remove('File--ignored');
+    }
+  });
+};
+
+window.tagIgnoredFiles();
+
+// if we press the 'i' key while hovering over a file, we push it to the last files
+document.addEventListener('keydown', function (event) {
+  if (event.key !== 'i') {
+    return;
+  }
+
+  const target = currentHover;
+
+  if (!target || !target.classList.contains(ITEM_CLASS)) {
+    return;
+  }
+
+  const path = target.getAttribute('data-copy');
+  toggleIgnoredFile(path);
+
+  window.tagIgnoredFiles();
+});
+
+function getPushedLastFiles() {
+  const pushedLastFilesAsString = localStorage.getItem('pushedLastFiles');
+  const pushedLastFiles = new Set(
+    pushedLastFilesAsString ? JSON.parse(pushedLastFilesAsString) : []
+  );
+
+  return pushedLastFiles;
+}
+
+function toggleIgnoredFile(path) {
+  const pushedLastFiles = getPushedLastFiles();
+
+  if (pushedLastFiles.has(path)) {
+    pushedLastFiles.delete(path);
+  } else {
+    pushedLastFiles.add(path);
+  }
+
+  localStorage.setItem('pushedLastFiles', JSON.stringify([...pushedLastFiles]));
+}

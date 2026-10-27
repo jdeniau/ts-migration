@@ -9,5 +9,6 @@
   },
   "devDependencies": {
     "@types/node": "^18.15.11"
-  }
+  },
+  "packageManager": "yarn@4.18.1"
 }

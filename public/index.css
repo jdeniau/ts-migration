@@ -101,6 +101,25 @@ body,
   width: 10px;
 }
 
+.Toast {
+  background: rgb(38, 38, 38);
+  border-radius: 3px;
+  bottom: 20px;
+  color: white;
+  left: 50%;
+  opacity: 0;
+  padding: 10px 20px;
+  pointer-events: none;
+  position: fixed;
+  transform: translate(-50%, 10px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.Toast--visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 .DetailedData {
   max-width: 100%;
   background: #eee;

@@ -8,8 +8,31 @@ function copyToClip(str) {
   }
 
   document.addEventListener('copy', listener);
-  document.execCommand('copy');
+  const success = document.execCommand('copy');
   document.removeEventListener('copy', listener);
+
+  return success;
+}
+
+let toastTimeout;
+
+function showToast(message) {
+  let toast = document.querySelector('.Toast');
+
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.classList.add('Toast');
+    toast.setAttribute('role', 'status');
+    document.body.appendChild(toast);
+  }
+
+  toast.innerText = message;
+  toast.classList.add('Toast--visible');
+
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(function () {
+    toast.classList.remove('Toast--visible');
+  }, 2000);
 }
 
 let currentHover;
@@ -65,7 +88,13 @@ document.addEventListener('click', function (event) {
 
   event.preventDefault();
 
-  copyToClip(target.getAttribute('data-copy'));
+  const path = target.getAttribute('data-copy');
+
+  if (copyToClip(path)) {
+    showToast(`"${path}" copied to clipboard`);
+  } else {
+    showToast(`Unable to copy "${path}" to clipboard`);
+  }
 });
 
 window.tagIgnoredFiles = function tagIgnoredFiles() {

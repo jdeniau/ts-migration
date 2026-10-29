@@ -90,7 +90,7 @@ body,
   cursor: pointer;
   font: inherit;
   margin-bottom: -1px;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem;
   text-align: left;
 }
 
@@ -110,7 +110,8 @@ body,
 
 .TabProgress {
   display: block;
-  font-size: 0.85em;
+  font-size: 0.8em;
+  white-space: nowrap;
 }
 
 .HeatMap {

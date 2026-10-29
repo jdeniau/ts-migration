@@ -16,6 +16,11 @@ function formatProgress(fileImports: FileImports[]): string {
   return `${nbTs} / ${fileImports.length} (${percentageTs}%)`;
 }
 
+// "packages/form-builder/src" => "form-builder"
+function formatTabName(dir: string): string {
+  return dir.replace(/^(apps|packages)\//, '').replace(/\/src$/, '');
+}
+
 function generateHeatMap(fileImports: FileImports[]): string {
   return fileImports
     .map((fileImport) => {
@@ -93,8 +98,9 @@ export function generateHtml(sections: Section[], dir: string): string {
                     aria-controls="section-${index}"
                     aria-selected="${index === 0}"
                     data-tab="${section.dir}"
+                    title="${section.dir}"
                   >
-                    <span class="TabName">${section.dir}</span>
+                    <span class="TabName">${formatTabName(section.dir)}</span>
                     <span class="TabProgress">${formatProgress(
                       section.fileImports
                     )}</span>

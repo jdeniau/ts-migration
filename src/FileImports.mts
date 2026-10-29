@@ -37,6 +37,13 @@ export class FileImports {
     return this.fileName.endsWith('.ts') || this.fileName.endsWith('.tsx');
   }
 
+  isTest() {
+    return (
+      /\.(test|spec)\.[jt]sx?$/.test(this.fileName) ||
+      /(^|\/)__tests__\//.test(this.fileName)
+    );
+  }
+
   /**
    * This will sort the imports in the following order:
    * - js files first

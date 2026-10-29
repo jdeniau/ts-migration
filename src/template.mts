@@ -40,7 +40,9 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
 
             return `<a
                 href="#${fileImport.fileName}"
-                class="File File--${fileImport.isJs() ? 'js' : 'ts'}"
+                class="File File--${fileImport.isJs() ? 'js' : 'ts'}${
+                  fileImport.isTest() ? ' File--test' : ''
+                }"
                 title="${fileImport.fileName}"
                 data-tooltip="${tooltip}"
                 data-copy="${fileImport.fileName}"

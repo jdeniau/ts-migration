@@ -65,6 +65,22 @@ body,
   background: #b5d5ec;
 }
 
+.File--test.File--js {
+  background: #8b5a2b;
+}
+
+.File--ignored.File--test.File--js {
+  background: #dccbb9;
+}
+
+.File--test.File--ts {
+  background: #1fc7b6;
+}
+
+.File--ignored.File--test.File--ts {
+  background: #b9ece7;
+}
+
 .Tooltip {
   position: absolute;
   line-height: 1.3;

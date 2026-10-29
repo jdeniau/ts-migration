@@ -71,7 +71,18 @@ export function generateHtml(sections: Section[], dir: string): string {
   <body>
     <div id="root">
       <div class="App App--finished">
-        <h1>TS Migration for "${dir}"</h1>
+        <header class="Header">
+          <h1>TS Migration for "${dir}"</h1>
+          <div class="Search">
+            <input
+              type="search"
+              class="SearchInput"
+              placeholder="Highlight a path (ex: apps/desk/src/components/)"
+              aria-label="Highlight files by path"
+            />
+            <span class="SearchCount" aria-live="polite"></span>
+          </div>
+        </header>
         <div class="Summary">
           <h2>${formatProgress(allFileImports)}</h2>
           <div class="Legend">

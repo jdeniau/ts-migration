@@ -71,6 +71,44 @@ body,
   width: 14px;
 }
 
+.Header {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.Header h1 {
+  font-size: 1.6em;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.Search {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.SearchInput {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  width: 22rem;
+}
+
+/* out of the flow, so that the count does not move the layout */
+.SearchCount {
+  color: #666;
+  font-size: 0.8em;
+  margin-top: 0.2rem;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  white-space: nowrap;
+}
+
 .Sections {
   width: 80%;
 }
@@ -135,6 +173,11 @@ body,
 
 .File--js {
   background: #ffe70b;
+}
+
+/* inset shadow instead of border: the highlight must not move the grid */
+.File--match {
+  box-shadow: inset 0 0 0 3px #262626;
 }
 
 .File--ignored.File--js {

@@ -127,6 +127,32 @@ if (activeTab) {
   selectTab(activeTab);
 }
 
+const searchInput = document.querySelector('.SearchInput');
+const searchCount = document.querySelector('.SearchCount');
+
+// highlight the files whose path contains the search
+searchInput.addEventListener('input', function () {
+  const search = searchInput.value.trim().toLowerCase();
+  let nbMatches = 0;
+
+  document.querySelectorAll('.File').forEach((file) => {
+    const isMatch =
+      search !== '' &&
+      file.getAttribute('data-copy').toLowerCase().includes(search);
+
+    file.classList.toggle('File--match', isMatch);
+
+    if (isMatch) {
+      nbMatches++;
+    }
+  });
+
+  searchCount.innerText =
+    search === ''
+      ? ''
+      : `${nbMatches} matching file${nbMatches > 1 ? 's' : ''}`;
+});
+
 window.tagIgnoredFiles = function tagIgnoredFiles() {
   const files = document.querySelectorAll('.File');
   const pushedLastFiles = getPushedLastFiles();
@@ -146,7 +172,8 @@ window.tagIgnoredFiles();
 
 // if we press the 'i' key while hovering over a file, we push it to the last files
 document.addEventListener('keydown', function (event) {
-  if (event.key !== 'i') {
+  // do not ignore a file when typing "i" in the search input
+  if (event.key !== 'i' || event.target instanceof HTMLInputElement) {
     return;
   }
 

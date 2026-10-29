@@ -66,11 +66,11 @@ body,
 }
 
 .File--test.File--js {
-  background: #8b5a2b;
+  background: #e0a36b;
 }
 
 .File--ignored.File--test.File--js {
-  background: #dccbb9;
+  background: #f4e1cf;
 }
 
 .File--test.File--ts {

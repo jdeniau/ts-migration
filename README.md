@@ -26,4 +26,10 @@ If you want to list files on a subfolder of the project, you might pass a second
 yarn build /path/to/project src
 ```
 
+You can pass several subfolders (useful for a monorepo): each one gets its own tab
+
+```sh
+yarn build /path/to/project apps/desk/src apps/other/src packages/ui/src
+```
+
 Open the file `public/index.html` in your browser.

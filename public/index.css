@@ -22,7 +22,7 @@ body,
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -71,8 +71,50 @@ body,
   width: 14px;
 }
 
+.Sections {
+  width: 80%;
+}
+
+.Tabs {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.Tab {
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: #666;
+  cursor: pointer;
+  font: inherit;
+  margin-bottom: -1px;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.Tab:hover {
+  color: #000;
+}
+
+.Tab--active {
+  border-bottom-color: #007acc;
+  color: #000;
+}
+
+.TabName {
+  display: block;
+  font-weight: bold;
+}
+
+.TabProgress {
+  display: block;
+  font-size: 0.85em;
+}
+
 .HeatMap {
-  max-width: 80%;
+  display: flow-root;
 }
 
 .File {

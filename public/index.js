@@ -97,6 +97,36 @@ document.addEventListener('click', function (event) {
   }
 });
 
+function selectTab(tab) {
+  document.querySelectorAll('.Tab').forEach((otherTab) => {
+    const isActive = otherTab === tab;
+
+    otherTab.classList.toggle('Tab--active', isActive);
+    otherTab.setAttribute('aria-selected', isActive);
+    document.getElementById(otherTab.getAttribute('aria-controls')).hidden =
+      !isActive;
+  });
+
+  localStorage.setItem('activeTab', tab.getAttribute('data-tab'));
+}
+
+document.addEventListener('click', function (event) {
+  const tab = event.target.closest('.Tab');
+
+  if (tab) {
+    selectTab(tab);
+  }
+});
+
+// restore the last selected tab
+const activeTab = Array.from(document.querySelectorAll('.Tab')).find(
+  (tab) => tab.getAttribute('data-tab') === localStorage.getItem('activeTab')
+);
+
+if (activeTab) {
+  selectTab(activeTab);
+}
+
 window.tagIgnoredFiles = function tagIgnoredFiles() {
   const files = document.querySelectorAll('.File');
   const pushedLastFiles = getPushedLastFiles();

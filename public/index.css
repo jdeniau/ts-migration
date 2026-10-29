@@ -30,6 +30,47 @@ body,
   color: orange;
 }
 
+.Summary {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+
+.Summary h2 {
+  margin: 0;
+}
+
+.Legend {
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.LegendItems {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0 0 0.3rem;
+  padding: 0;
+}
+
+.LegendItems li {
+  align-items: center;
+  display: flex;
+}
+
+.LegendSwatch {
+  border-radius: 2px;
+  display: inline-block;
+  height: 14px;
+  margin-right: 6px;
+  width: 14px;
+}
+
 .HeatMap {
   max-width: 80%;
 }
@@ -167,8 +208,4 @@ body,
 .OutputLink > img {
   max-height: 24px;
   width: auto;
-}
-
-.mt0 {
-  margin-top: 0;
 }

@@ -26,7 +26,18 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
     <div id="root">
       <div class="App App--finished">
         <h1>TS Migration for "${dir}"</h1>
-        <h2 class="mt0">${nbTs} / ${fileImports.length} (${percentageTs}%)</h2>
+        <div class="Summary">
+          <h2>${nbTs} / ${fileImports.length} (${percentageTs}%)</h2>
+          <div class="Legend">
+            <ul class="LegendItems">
+              <li><span class="LegendSwatch File--js"></span>JS</li>
+              <li><span class="LegendSwatch File--ts"></span>TS</li>
+              <li><span class="LegendSwatch File--js File--test"></span>JS test</li>
+              <li><span class="LegendSwatch File--ts File--test"></span>TS test</li>
+            </ul>
+            <em>Press "i" to mark a file as "ignored" (locally)</em>
+          </div>
+        </div>
         <main class="HeatMap">
         ${fileImports
           .map((fileImport) => {
@@ -52,10 +63,6 @@ export function generateHtml(fileImports: FileImports[], dir: string): string {
           })
           .join('\n')}
         </main>
-        
-        <p>
-          <em>Press "i" to mark a file as "ignored" (locally)</em>
-        </p>
       </div>
     </div>
 
